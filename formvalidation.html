@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script>
+        function f1(e) {
+            e.preventDefault();
+            // console.log(e.target)
+            let email = document.getElementById('email')
+            let pass = document.getElementById('password')
+        }
+        function validateEmail(e) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(e.target.value).toLowerCase());
+        }
+        function validatePassword(e) {
+            var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}/;
+            return re.test(String(e.target.value));
+        }
+        function validateEmailF(e) {
+            document.getElementById('emailHelp').innerHTML = validateEmail(e) ? "good" : 'please enter valid email'
+        }
+        function validatePasswordF(e) {
+            document.getElementById('passHelp').innerHTML = validatePassword(e) ? "good" : 'please enter valid password'
+        }
+        function f1(e) {
+            let el = document.getElementById('tnt')
+            el.style.background = e.target.value
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <form id="form1" method="GET" action="http://www.google.com/" onsubmit="f1(event)">
+            <div class="form-group">
+                <label for="exampleInputEmail1" id="tnt">Email address</label>
+                <input type="text" class="form-control" id="email" aria-describedby="emailHelp" onchange="validateEmailF(event)">
+                <small id="emailHelp" class="form-text text-muted ">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group ">
+                <label for="exampleInputPassword1 ">Password</label>
+                <input type="password" class="form-control" id="password" value="AaaaaaaaA" onchange="validatePasswordF(event)">
+                <small id="passHelp" class="form-text text-muted ">We'll never share your email with anyone else.</small>
+            </div>
+            <button type="submit " class="btn btn-primary ">Submit</button>
+        </form>
+        <input type="text" onchange="f1(event)">
+    </div>
+</body>
+
+</html>

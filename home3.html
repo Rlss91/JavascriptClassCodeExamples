@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            background: rgb(98, 218, 255);
+            font-size: 10rem;
+        }
+    </style>
+    <script src="js/ajax.js"></script>
+    <script>
+        let timeo
+        window.addEventListener('load', () => {
+            div2.innerText = 'test'
+            // startTimeout()
+            // window.addEventListener('click', () => {
+            //     // console.log('clicked')
+            //     // if (timeo != null)
+            //     stopTimeout()
+            //     startTimeout()
+            // })
+        })
+        function startTimeout() {
+            timeo = setTimeout(moveToUrl, 5000)
+        }
+        function stopTimeout() {
+            clearTimeout(timeo)
+        }
+        function moveToUrl(url = "http://127.0.0.1:5500/loginPage.html") {
+            location.href = url
+        }
+        function f1() {
+            ajax_get(`http://localhost:3000/arr?index=${document.getElementById('index').value}`, f2)
+        }
+        function f2(data) {
+            document.getElementById('div').innerText = data
+        }
+        function f3() {
+            let data = `document.getElementById('div').innerText = "rthtuirtygf "`
+            eval(data)
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" name="" id="index">
+    <button id="btn" onclick="f1()">click here to see awsome magic trick</button>
+    <div id="div2"></div>
+    <div id="div">
+
+    </div>
+    <button onclick="f3()">eval</button>
+</body>
+
+</html>

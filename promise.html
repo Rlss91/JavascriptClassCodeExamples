@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        let promise1 = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                let date = new Date()
+                if (!(date.getSeconds() % 2))
+                    resolve('Hello');
+                else
+                    reject('Error: Hello')
+            }, 3000);
+        });
+
+        function handleClick() {
+            promise1.then(function (value) {
+                console.log(value);
+            }).catch(function (err) {
+                console.log(err)
+            });
+        }
+
+        // promise1.then(print).catch(print);
+
+        // function print(msg) {
+        //     console.log(msg)
+        // }
+
+        // async function f1(){
+        //     try{
+        //         let data = await promise1
+        //         console.log(data)
+        //     } catch(err) {
+        //         console.log(err)
+        //     }
+        // }
+
+        // f1()
+
+        console.log(promise1);
+            // expected output: [object Promise]
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
