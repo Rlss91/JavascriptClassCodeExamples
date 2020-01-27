@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function handleClick() {
+            document.getElementById('error').innerText = ''
+            let promise1 = new Promise((ok, notok) => {
+                setTimeout(() => {
+                    let arr = ['black', 'white', 'red', 'blue', 'yellow']
+                    let index = getRndInteger(0, 7)
+                    if (index < 5) {
+                        ok(arr[index])
+                    } else {
+                        notok({ error: 'please try again' })
+                    }
+                }, 1000);
+            })
+            promise1.then(function (color) {
+                document.getElementById('title').style.color = color
+            }).catch(function (error) {
+                document.getElementById('error').innerText = error.error
+            })
+        }
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    </script>
+</head>
+
+<body>
+    <h1 id="title">Title</h1>
+    <h3 id="error"></h3>
+    <button onclick="handleClick()">Click me</button>
+</body>
+
+</html>
