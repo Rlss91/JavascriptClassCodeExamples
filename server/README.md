@@ -7,3 +7,7 @@ Only for the first time
 To start the server 
 run this command
 npm start
+
+Api:
+http://localhost:3000/arr?index= 0 - 2
+look home3.html
