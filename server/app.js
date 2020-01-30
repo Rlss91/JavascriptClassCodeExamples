@@ -17,7 +17,20 @@ app.get('/arr', (req, res) => {
         [2, 3, 4, 5, 6],
         [3, 4, 5, 6, 7]
     ]
-    res.json(arr[req.query.index].join('|'))
+    let index = parseInt(req.query.index)
+    if (index >= 0 && index < arr.length)
+        res.json(arr[index])
+    else
+        res.json({ error: 'the array starts with 0 and ands in 2' })
+})
+
+app.get('/json', (req, res) => {
+    let arr = [
+        [1, 2, 3, 4, 5],
+        [2, 3, 4, 5, 6],
+        [3, 4, 5, 6, 7]
+    ]
+    res.json(arr)
 })
 
 app.listen(PORT, () => {
