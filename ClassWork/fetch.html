@@ -10,8 +10,16 @@
     <script>
         window.addEventListener('load', async () => {
             try {
-                let data = await fetch_get('http://localhost:3001/')
-                console.log("data:" + data)
+                let data = await fetch_get('http://localhost:3000/arr?index=0')
+                console.log(data)
+                let div = document.getElementById('div')
+                // let str = '<ol>'
+                // for (let item of data) {
+                //     str += `<li>${item}</li>`
+                // }
+                // str += '</ol>'
+                // div.innerHTML = str
+                div.innerHTML = `<ol>${data.map(item => `<li>${item}</li>`).join('')}</ol>`
             } catch (err) {
                 console.log("Error:" + err)
             }
@@ -20,7 +28,7 @@
 </head>
 
 <body>
-
+    <div id="div"></div>
 </body>
 
 </html>
