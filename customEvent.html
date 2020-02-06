@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        let gal = new Event('gal')
+        window.addEventListener('load', () => {
+            document.getElementById('div').addEventListener('gal', () => {
+                document.getElementById('div').style.backgroundColor = 'red'
+            }, false)
+            document.getElementById('div2').addEventListener('pisquer', (e) => {
+                console.log(e)
+                document.getElementById('div2').style.backgroundColor = e.detail
+            })
+        })
+        function f1() {
+            document.getElementById('div').dispatchEvent(gal)
+            document.getElementById('div2').dispatchEvent(new CustomEvent('pisquer', {
+                detail: document.getElementById('txt').value
+            }))
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="f1()" id="btn">Click to start the event</button>
+    <input type="text" id="txt" value="#334455" />
+    <div id="div">random text</div>
+    <div id="div2">random text div 2</div>
+</body>
+
+</html>

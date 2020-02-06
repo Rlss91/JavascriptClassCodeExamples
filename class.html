@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        class Animal {
+            name;
+            constructor(name) {
+                this.name = name
+            }
+            getName() {
+                return this.name
+            }
+        }
+        class Dog extends Animal {
+            color;
+            constructor(color) {
+                super('dog')
+                this.color = color
+            }
+        }
+        window.addEventListener('load', () => {
+            let dog = new Dog('#334455')
+            console.log(dog)
+            console.log(this)
+        })
+        f1 = (elm) => {
+            console.log(this)
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="console.log(this)">test</button>
+</body>
+
+</html>
