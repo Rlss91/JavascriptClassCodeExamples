@@ -16,8 +16,20 @@
     <script>
         window.addEventListener('load', () => {
             let color = localStorage.getItem('color')
+            let arr = [1, 2, 3]
+            // localStorage.setItem('arr', JSON.stringify(arr))
             if (color != null) {
                 document.getElementById('car').style.backgroundColor = color
+            }
+            arr = localStorage.getItem('arr')
+            if (arr != null) {
+                arr = JSON.parse(arr)
+                console.log(arr)
+                arr = [...arr, 4]
+                console.log(arr)
+            } else {
+                arr = []
+                arr = [...arr, 4]
             }
         })
         function setColor(color) {

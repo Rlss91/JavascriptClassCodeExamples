@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function ImagePromise(url) {
+            return new Promise((ok, not) => {
+                let img = new Image();
+                img.src = url
+                img.onload = () => {
+                    ok(img)
+                }
+                img.onerror = () => {
+                    not('error')
+                }
+            })
+        }
+        window.addEventListener('load', async () => {
+            let canvas = document.getElementById('canvas')
+            let ctx = canvas.getContext('2d')
+            let iaawef = await ImagePromise('imgs/Screenshot_1569263533.png')
+            ctx.drawImage(iaawef, 0, 0)
+        })
+        async function handleImageSelected(e) {
+            console.log(e.target.value)
+            let canvas = document.getElementById('canvas')
+            let ctx = canvas.getContext('2d')
+            let iaawef = await ImagePromise(e.target.value)
+            ctx.drawImage(iaawef, 0, 0)
+        }
+    </script>
+    <style>
+        canvas {
+            border: solid 1px red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="text" name="fimg" id="fimg" onchange="handleImageSelected(event)">
+    </div>
+    <canvas id="canvas">
+        canvas is not suported
+    </canvas>
+</body>
+
+</html>
