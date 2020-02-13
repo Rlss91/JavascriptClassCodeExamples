@@ -32,6 +32,20 @@
             let iaawef = await ImagePromise(e.target.value)
             ctx.drawImage(iaawef, 0, 0)
         }
+        async function handleClick(e) {
+            // console.log(e.target.getAttribute('imageUrl'))
+            console.log(e.target.id)
+            let canvas = document.getElementById('canvas')
+            let ctx = canvas.getContext('2d')
+            let iaawef = await ImagePromise('imgs/' + e.target.getAttribute('imageUrl'))
+            ctx.drawImage(iaawef, 0, 0)
+        }
+        async function handleClick2(url) {
+            let canvas = document.getElementById('canvas')
+            let ctx = canvas.getContext('2d')
+            let iaawef = await ImagePromise('imgs/' + url)
+            ctx.drawImage(iaawef, 0, 0)
+        }
     </script>
     <style>
         canvas {
@@ -47,6 +61,12 @@
     <canvas id="canvas">
         canvas is not suported
     </canvas>
+    <button onclick="handleClick(event)" imageUrl="Teemo_0.jpg">img1</button>
+    <button onclick="handleClick(event)" imageUrl="index.jpg">img2</button>
+    <button onclick="handleClick(event)" imageUrl="images.jpg">img3</button>
+    <button onclick="handleClick2('Teemo_0.jpg')">img1.2</button>
+    <button onclick="handleClick2('index.jpg')">img2.2</button>
+    <button onclick="handleClick2('images.jpg')">img3.2</button>
 </body>
 
 </html>

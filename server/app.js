@@ -58,6 +58,14 @@ app.post('/json', (req, res) => {
     res.json(arr)
 })
 
+app.get('/chart', (req, res) => {
+    let data = {
+        labels: ['a', 'b', 'c', 'd'],
+        data: [10, 5, 2, 7]
+    }
+    res.json(data)
+})
+
 app.listen(PORT, () => {
     console.log(`be haver the deamon on port ${PORT}`)
 })
